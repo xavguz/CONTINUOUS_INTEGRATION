@@ -12,4 +12,3 @@ EXTRAS = {
     "SPA": {"price": 30, "premium": True},
     "SPECIALIZED_PROGRAM": {"price": 40, "premium": True}
 }
-
