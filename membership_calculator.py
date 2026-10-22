@@ -16,3 +16,4 @@ def calculate_quote(plan, extras, members):
 
     # R3: Subtotal
     subtotal = (plan_price + extras_price) * members
+    return {"subtotal": subtotal, 0}
