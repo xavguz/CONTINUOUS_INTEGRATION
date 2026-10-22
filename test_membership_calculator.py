@@ -144,13 +144,15 @@ def test_round_half_up():
     quote = calculate_quote("PREMIUM", ["SPECIALIZED_PROGRAM"], 1)
 
     # Subtotal: 110
-    # Special offer: 20
-    # Amount before surcharge: 90
-    # Surcharge: 13.5
-    # Final amount: 103.5, rounded half up to 104
-    assert quote["surcharge"] == Decimal("13.50")
-    assert quote["total"] == 104
+    # Special offer: 0 (amount is not over 200)
+    # Amount before surcharge: 110
+    # Surcharge: 16.5
+    # Final amount: 126.5, rounded half up to 127
 
+    assert quote["subtotal"] == Decimal("110")
+    assert quote["special_offer"] == Decimal("0")
+    assert quote["surcharge"] == Decimal("16.50")
+    assert quote["total"] == 127
 
 def test_invalid_selection_returns_minus_one():
     assert calculate_quote("INVALID", [], 1) == -1
