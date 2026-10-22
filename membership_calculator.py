@@ -28,16 +28,16 @@ def calculate_quote(plan, extras, members):
 
     subtotal = (plan_price + extras_price) * members
 
-    # R4: Apply group discount
+    """Apply group discount"""
     amount = apply_group_discount(subtotal, members)
     group_discount = subtotal - amount
 
-    # R5: Apply special offer
+    """Apply special offer"""
     amount_before_offer = amount
     amount = apply_special_offer(amount)
     special_offer = amount_before_offer - amount
 
-    # R6: Apply premium surcharge
+    """Apply premium surcharge"""
     has_premium_extra = any(
         EXTRAS[extra]["premium"] is True
         for extra in extras
@@ -50,7 +50,7 @@ def calculate_quote(plan, extras, members):
     )
     surcharge = amount - amount_before_surcharge
 
-    # R7: Round half up only at the end
+    """Round half up only at the end"""
     total = int(
         amount.quantize(
             Decimal("1"),

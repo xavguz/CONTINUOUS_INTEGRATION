@@ -1,29 +1,34 @@
-from memberships import PLANS, EXTRAS
 
-"""Validate gym membership plan, extras, and member count."""
+"""Validate membership plan, extras, and member count."""
+
+from memberships import PLANS, EXTRAS
 
 
 def validate_selection(plan, extras, members):
-    """Return True for a valid selection and False otherwise."""
-    # Keep your existing validation logic here,
-    # applying the replacements listed above.
-
-    if isinstance(plan, str) == False or plan not in PLANS:
+    """Return True when the membership selection is valid."""
+    if isinstance(plan, str) is False:
         return False
 
-    if isinstance(extras, (list, tuple)) == False:
+    if plan not in PLANS:
+        return False
+
+    if isinstance(extras, (list, tuple)) is False:
         return False
 
     for extra in extras:
-        if isinstance(extra, str) == False or extra not in EXTRAS:
+        if isinstance(extra, str) is False:
             return False
 
-    if type(members) != int or members < 1:
+        if extra not in EXTRAS:
+            return False
+
+        if EXTRAS[extra]["premium"] is True and plan != "PREMIUM":
+            return False
+
+    if isinstance(members, int) is False or isinstance(members, bool) is True:
         return False
 
-    if plan != "PREMIUM":
-        for extra in extras:
-            if EXTRAS[extra]["premium"] == True:
-                return False
+    if members < 1:
+        return False
 
     return True
