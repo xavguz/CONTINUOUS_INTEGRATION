@@ -1,3 +1,5 @@
+"""Store gym membership plans and available extras."""
+
 PLANS = {
     "BASIC": 30,
     "STANDARD": 45,

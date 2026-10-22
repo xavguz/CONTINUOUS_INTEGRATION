@@ -1,6 +1,13 @@
 from memberships import PLANS, EXTRAS
 
+"""Validate gym membership plan, extras, and member count."""
+
+
 def validate_selection(plan, extras, members):
+    """Return True for a valid selection and False otherwise."""
+    # Keep your existing validation logic here,
+    # applying the replacements listed above.
+
     if isinstance(plan, str) == False or plan not in PLANS:
         return False
 

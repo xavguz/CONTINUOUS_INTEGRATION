@@ -1,3 +1,5 @@
+"""Unit tests for gym membership quote calculations."""
+
 from decimal import Decimal
 
 import pytest
@@ -7,12 +9,11 @@ from validators import validate_selection
 
 
 # R1: Plans
-
-def test_valid_plan():
-    assert validate_selection("BASIC", [], 1) == True
-    assert validate_selection("STANDARD", [], 1) == True
-    assert validate_selection("PREMIUM", [], 1) == True
-
+def test_valid_plans():
+    """Accept all three membership plans."""
+    assert validate_selection("BASIC", [], 1) is True
+    assert validate_selection("STANDARD", [], 1) is True
+    assert validate_selection("PREMIUM", [], 1) is True
 
 def test_invalid_plan():
     assert calculate_quote("GOLD", [], 1) == -1
