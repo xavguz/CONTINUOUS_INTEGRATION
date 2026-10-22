@@ -3,7 +3,7 @@ from membership_calculator import calculate_quote
 from validators import validate_selection
 
 
-# R1: Plans
+#R1: Plans
 def test_valid_plan():
     assert validate_selection("BASIC", [], 1) == True
 
@@ -12,7 +12,7 @@ def test_invalid_plan():
     assert calculate_quote("GOLD", [], 1) == -1
 
 
-# R2: Extras
+#R2: Extras
 def test_valid_extra():
     assert validate_selection("BASIC", ["GROUP_CLASSES"], 1) == True
 
@@ -30,15 +30,11 @@ def test_premium_extra_allowed_for_premium():
 
 
 def test_multiple_extras():
-    quote = calculate_quote(
-        "BASIC",
-        ["GROUP_CLASSES", "PERSONAL_TRAINING"],
-        1
-    )
+    quote = calculate_quote("BASIC", ["GROUP_CLASSES", "PERSONAL_TRAINING"], 1)
     assert quote["subtotal"] == 70
 
 
-# R3: Subtotal and members
+#R3: Subtotal and members
 def test_subtotal():
     quote = calculate_quote("BASIC", ["GROUP_CLASSES"], 1)
     assert quote["subtotal"] == 45
