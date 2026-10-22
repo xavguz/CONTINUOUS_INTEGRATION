@@ -11,4 +11,3 @@ class CotizadorGym:
     def esta_servidor_listo(self) -> bool:
         """Verifica si el servidor del cotizador se encuentra listo."""
         return True
-
