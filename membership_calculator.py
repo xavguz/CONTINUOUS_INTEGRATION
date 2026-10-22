@@ -10,10 +10,9 @@ def calculate_quote(plan, extras, members):
     plan_price = Decimal(str(PLANS[plan]))
 
     extras_price = sum(
-        (Decimal(str(EXTRAS[extra]["price"])) for extra in extras),
-        Decimal("0")
+        Decimal(str(EXTRAS[extra]["price"]))
+        for extra in extras
     )
 
-    # R3: Calculate subtotal
+    # R3: Subtotal
     subtotal = (plan_price + extras_price) * members
-
